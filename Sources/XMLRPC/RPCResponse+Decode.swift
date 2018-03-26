@@ -2,7 +2,7 @@ import XML
 import Stream
 
 extension RPCResponse {
-    public init<T: UnsafeStreamReader>(from stream: T) throws {
+    public init<T: StreamReader>(from stream: T) throws {
         let document = try XML.Document(from: stream)
         guard let root = document.root, root.name == "methodResponse" else {
             throw RPCError.invalidXML
