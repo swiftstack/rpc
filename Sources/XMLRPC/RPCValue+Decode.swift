@@ -1,6 +1,6 @@
 import XML
+import Base64
 import struct Foundation.Date
-import struct Foundation.Data
 
 extension RPCValue {
     init(from element: XML.Element) throws {
@@ -91,12 +91,12 @@ extension Array where Element == UInt8 {
         guard let value = element.value else {
             throw RPCValueError(reason: .empty, element: element)
         }
-        guard let decoded = Data(base64Encoded: value) else {
+        guard let bytes = [UInt8](decodingBase64: value) else {
             throw RPCValueError(
                 reason: .invalidValue,
                 description: "can't decode base64 '\(value)' as [UInt8]")
         }
-        self = [UInt8](decoded)
+        self = bytes
     }
 }
 

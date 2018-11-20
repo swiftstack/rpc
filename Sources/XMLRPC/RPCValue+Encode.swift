@@ -1,6 +1,6 @@
 import XML
+import Base64
 import struct Foundation.Date
-import struct Foundation.Data
 
 extension XML.Element {
     init(rpcValue value: RPCValue) {
@@ -55,20 +55,20 @@ extension XML.Element {
 extension XML.Element {
     init(rpcValue value: [UInt8]) {
         self.init(name: "base64")
-        self.value = Data(value).base64EncodedString()
+        self.value = .init(encodingToBase64: value)
     }
 }
 
 extension XML.Element {
     init(rpcValues values: [RPCValue]) {
         self.init(name: "array")
-        var data = XML.Element(name: "data")
+        var element = XML.Element(name: "data")
         for value in values {
             var valueXml = XML.Element(name: "value")
             valueXml.children.append(.element(XML.Element(rpcValue: value)))
-            data.children.append(.element(valueXml))
+            element.children.append(.element(valueXml))
         }
-        self.children.append(.element(data))
+        self.children.append(.element(element))
     }
 }
 

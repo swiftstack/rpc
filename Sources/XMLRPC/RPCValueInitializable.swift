@@ -41,10 +41,10 @@ extension Double: RPCValueInitializable {
 
 extension Array where Element == UInt8 {
     public init?(_ value: RPCValue) {
-        guard case let .base64(data) = value else {
+        guard case let .base64(bytes) = value else {
             return nil
         }
-        self = data
+        self = bytes
     }
 }
 
