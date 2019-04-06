@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "XMLRPC",
+    name: "RPC",
     products: [
         .library(name: "XMLRPC", targets: ["XMLRPC"])
     ],
