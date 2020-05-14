@@ -41,7 +41,7 @@ class XMLRPCTests: TestCase {
                 .double(3.3),
                 .bool(true)
             ])
-            assertEqual(request.xmlCompact, expected)
+            expect(request.xmlCompact == expected)
         } catch {
             fail(String(describing: error))
         }
@@ -82,7 +82,7 @@ class XMLRPCTests: TestCase {
 
         do {
             let response = try RPCResponse(from: stream)
-            assertEqual(response, RPCResponse(params: [
+            expect(response == RPCResponse(params: [
                 RPCValue.struct([
                     "first": .string("one"),
                     "second": .int(2),
