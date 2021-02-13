@@ -2,8 +2,10 @@ import XML
 import Stream
 
 extension RPCResponse {
-    public init<T: StreamReader>(from stream: T) throws {
-        let document = try XML.Document(from: stream)
+    public static func decode<T: StreamReader>(
+        from stream: T
+    ) async throws -> RPCResponse {
+        let document = try await XML.Document.decode(from: stream)
         guard let root = document.root, root.name == "methodResponse" else {
             throw RPCError.invalidXML
         }
@@ -23,6 +25,7 @@ extension RPCResponse {
             }
             params.append(try RPCValue(from: element))
         }
-        self.params = params
+
+        return .init(params: params)
     }
 }
