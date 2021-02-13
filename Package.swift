@@ -22,9 +22,10 @@ let package = Package(
             swiftSettings: [
                 .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"])
             ]),
-        .testTarget(
-            name: "XMLRPCTests",
+        .executableTarget(
+            name: "Tests/XMLRPC",
             dependencies: ["XMLRPC", "Test"],
+            path: "Tests/XMLRPC",
             swiftSettings: [
                 .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"])
             ])
