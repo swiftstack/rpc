@@ -2,8 +2,8 @@ import XML
 import Stream
 
 extension RPCResponse {
-    public static func decode<T: StreamReader>(
-        from stream: T
+    public static func decode(
+        from stream: StreamReader
     ) async throws -> RPCResponse {
         let document = try await XML.Document.decode(from: stream)
         guard let root = document.root, root.name == "methodResponse" else {

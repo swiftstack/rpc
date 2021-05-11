@@ -2,8 +2,8 @@ import XML
 import Stream
 
 extension RPCRequest {
-    public func encode<T: StreamWriter>(
-        to stream: T,
+    public func encode(
+        to stream: StreamWriter,
         format: Format = .compact
     ) async throws {
         let document = XML.Document(rpcRequest: self)
