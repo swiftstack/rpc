@@ -6,5 +6,5 @@ The package doesn't include networking part.
 ## Package.swift
 
 ```swift
-.package(url: "https://github.com/swift-stack/xml-rpc.git", .branch("fiber"))
+.package(url: "https://github.com/swiftstack/xml-rpc.git", .branch("fiber"))
 ```
