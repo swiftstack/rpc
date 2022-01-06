@@ -18,19 +18,11 @@ let package = Package(
             name: "XMLRPC",
             dependencies: [
                 "XML",
-                .product(name: "Base64", package: "Radix")],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-disable-availability-checking"]),
-                .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"])
-            ]),
+                .product(name: "Base64", package: "Radix")]),
         .executableTarget(
             name: "Tests/XMLRPC",
             dependencies: ["XMLRPC", "Test"],
-            path: "Tests/XMLRPC",
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-disable-availability-checking"]),
-                .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"])
-            ])
+            path: "Tests/XMLRPC"),
     ]
 )
 
