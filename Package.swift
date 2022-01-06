@@ -6,12 +6,12 @@ let package = Package(
     products: [
         .library(
             name: "XMLRPC",
-            targets: ["XMLRPC"])
+            targets: ["XMLRPC"]),
     ],
     dependencies: [
         .package(name: "XML"),
         .package(name: "Radix"),
-        .package(name: "Test")
+        .package(name: "Test"),
     ],
     targets: [
         .target(
