@@ -21,11 +21,14 @@ let package = Package(
         .target(
             name: "XMLRPC",
             dependencies: [
-                "XML",
+                .product(name: "XML", package: "xml"),
                 .product(name: "Base64", package: "Radix")]),
         .executableTarget(
             name: "Tests/XMLRPC",
-            dependencies: ["XMLRPC", "Test"],
+            dependencies: [
+                .target(name: "XMLRPC"),
+                .product(name: "Test", package: "test"),
+            ],
             path: "Tests/XMLRPC"),
     ]
 )
@@ -72,6 +75,6 @@ extension Package.Dependency {
     static func package(name: String, source: Source) -> Package.Dependency {
         return source == .local
             ? .package(name: name, path: source.url(for: name))
-            : .package(name: name, url: source.url(for: name), .branch("dev"))
+            : .package(url: source.url(for: name), branch: "dev")
     }
 }
