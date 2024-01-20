@@ -22,16 +22,27 @@ let package = Package(
             name: "XMLRPC",
             dependencies: [
                 .product(name: "XML", package: "xml"),
-                .product(name: "Base64", package: "Radix")]),
+                .product(name: "Base64", package: "Radix")],
+            swiftSettings: swift6),
         .executableTarget(
             name: "Tests/XMLRPC",
             dependencies: [
                 .target(name: "XMLRPC"),
                 .product(name: "Test", package: "test"),
             ],
-            path: "Tests/XMLRPC"),
+            path: "Tests/XMLRPC",
+            swiftSettings: swift6),
     ]
 )
+
+let swift6: [SwiftSetting] = [
+    .enableUpcomingFeature("ConciseMagicFile"),
+    .enableUpcomingFeature("ForwardTrailingClosures"),
+    .enableUpcomingFeature("ExistentialAny"),
+    .enableUpcomingFeature("StrictConcurrency"),
+    .enableUpcomingFeature("ImplicitOpenExistentials"),
+    .enableUpcomingFeature("BareSlashRegexLiterals"),
+]
 
 // MARK: - custom package source
 
