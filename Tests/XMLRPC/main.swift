@@ -4,7 +4,7 @@ import Stream
 
 @testable import XMLRPC
 
-test.case("Request") {
+test("Request") {
     let stream = InputByteStream("""
         <?xml version="1.0" encoding="utf-8" standalone="no"?>
         <methodCall>
@@ -37,7 +37,7 @@ test.case("Request") {
     expect(request.xmlCompact == expected)
 }
 
-test.case("Response") {
+test("Response") {
     let stream = InputByteStream("""
          <?xml version="1.0" encoding="utf-8"?>
          <methodResponse>
@@ -80,4 +80,4 @@ test.case("Response") {
     ]))
 }
 
-test.run()
+await run()
