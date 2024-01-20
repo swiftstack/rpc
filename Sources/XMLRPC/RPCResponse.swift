@@ -9,7 +9,7 @@ public struct RPCResponse {
 }
 
 extension RPCResponse: Equatable {
-    public static func ==(lhs: RPCResponse, rhs: RPCResponse) -> Bool {
+    public static func == (lhs: RPCResponse, rhs: RPCResponse) -> Bool {
         return lhs.params == rhs.params
     }
 }

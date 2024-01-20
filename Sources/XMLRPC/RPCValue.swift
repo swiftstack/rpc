@@ -8,7 +8,7 @@ public enum RPCValue {
     case string(String)
     case date(Date)
     case base64([UInt8])
-    case `struct`([String : RPCValue])
+    case `struct`([String: RPCValue])
     case array([RPCValue])
 }
 
@@ -28,7 +28,7 @@ extension RPCValue: CustomStringConvertible {
 }
 
 extension RPCValue: Equatable {
-    public static func ==(lhs: RPCValue, rhs: RPCValue) -> Bool {
+    public static func == (lhs: RPCValue, rhs: RPCValue) -> Bool {
         switch (lhs, rhs) {
         case let (.int(lhs), .int(rhs)): return lhs == rhs
         case let (.bool(lhs), .bool(rhs)): return lhs == rhs

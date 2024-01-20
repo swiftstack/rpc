@@ -5,15 +5,14 @@ import struct Foundation.Date
 extension RPCValue {
     init(from element: XML.Element) throws {
         switch element.name {
-        case "i4": fallthrough
-        case "int": self = .int(try Int(from: element))
+        case "i4", "int": self = .int(try Int(from: element))
         case "boolean": self = .bool(try Bool(from: element))
         case "string": self = .string(try String(from: element))
         case "double": self = .double(try Double(from: element))
         case "dateTime.iso8601": self = .date(try Date(from: element))
         case "base64": self = .base64(try [UInt8](from: element))
         case "array": self = .array(try [RPCValue](from: element))
-        case "struct": self = .`struct`(try [String : RPCValue](from: element))
+        case "struct": self = .`struct`(try [String: RPCValue](from: element))
         default: throw RPCValueError(
             reason: .notImplemented, description: element.xmlCompact)
         }
@@ -118,7 +117,7 @@ extension Array where Element == RPCValue {
 
 extension Dictionary where Key == String, Value == RPCValue {
     init(from element: XML.Element) throws {
-        var `struct` = [String : RPCValue]()
+        var `struct` = [String: RPCValue]()
         for member in element.children {
             guard let name = member["name"].value else {
                 throw RPCValueError(reason: .empty, element: element)

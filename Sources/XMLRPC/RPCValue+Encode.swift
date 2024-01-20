@@ -73,7 +73,7 @@ extension XML.Element {
 }
 
 extension XML.Element {
-    init(rpcValues values: [String : RPCValue]) {
+    init(rpcValues values: [String: RPCValue]) {
         self.init(name: "struct")
 
         for (key, value) in values {
